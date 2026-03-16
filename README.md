@@ -1,4 +1,4 @@
-# 🚀 End-to-End Compliance Orchestration: Scaling Salesforce-Jira Identity Audits with Azure ADLS Gen2 and Microsoft Fabric
+# 🚀 End-to-End Compliance Orchestration: Scaling Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation2 and Microsoft Fabric
 
 ---
 ![Azure](https://img.shields.io/badge/Azure-Data%20Lake%20Gen2-blue?style=for-the-badge&logo=microsoft-azure)
@@ -10,12 +10,13 @@
 This project implements a scalable, automated **Identity Governance and Administration (IGA)** solution. By orchestrating data between **Salesforce** (Source of Truth) and **Jira** (Operational Access), this engine programmatically identifies "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated.
 
 ---
-##⚡ Key Features
-Automated Data Ingestion: Uses Azure Fabric Data Factory to pull from Salesforce (CRM) and Jira (DevOps) REST APIs.
-Schema Resilience: T-SQL guardrails to ensure consistent metadata across ingestion cycles.
-Audit Archiving: Automatic snapshotting of user states into an audit_history table for SOC2/ISO 27001 compliance.
-Risk Detection: SQL-based reconciliation engine to surface unauthorized access in real-time.
-
+## ✨ Key Features
+* **🔄 End-to-End Compliance Orchestration:** Automates the complete data lifecycle—from secure REST API extraction to final risk reconciliation in the SQL Warehouse.
+* **📂 Scalable Ingestion via Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer to decouple extraction from the warehouse write process, eliminating "Write Batch Timeouts."
+* **⚡ Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** within Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
+* **🛡️ Self-Healing Schema Resilience:** Employs an automated **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
+* **🔍 Programmatic "Ghost User" Detection:** Features a reconciliation engine that joins disparate datasets to automatically flag terminated or unauthorized accounts.
+* **📜 Immutable Audit Archiving:** Implements point-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
 ---
 ## 🤖 Automated Workflows
 This solution moves beyond manual spreadsheets by automating the entire data lifecycle:
@@ -28,20 +29,56 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 ---
 
 ## 🛠️ Core Technologies
-* **☁️ Microsoft Fabric:** The unified analytics "SaaS" platform for data residency and compute.
-* **🗄️ Azure Data Lake Storage (ADLS) Gen2:** The high-performance staging layer that buffers API responses for reliable ingestion.
-* **🌊 Fabric Lakehouse & Warehouse:** Storage layers utilizing **Delta tables** to ensure ACID-compliant identity snapshots.
-* **⚙️ SQL Analytics Endpoint:** The distributed T-SQL engine used for cross-platform identity handshakes.
+* **☁️ Microsoft Fabric:** Unified analytics platform for data residency and compute.
+* **🗄️ Azure Data Lake Storage (ADLS) Gen2:** High-performance staging layer for reliable ingestion.
+* **🌊 Fabric Lakehouse & Warehouse:** Storage layers utilizing **Delta tables** to ensure ACID-compliant snapshots.
+* **⚙️ SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
 
 ---
 
-## 🏗️ Implementation Architecture
+## 🏗️ Environment Provising & Implementation Architecture
+Deployed within a unified Microsoft Fabric ecosystem, the environment follows a **Medallion Architecture** to ensure data integrity.
 
-### 1️⃣ Environment Provisioning
-The framework is deployed within a Fabric Workspace using a dedicated **`RiskandCompliance`** Warehouse. The data follows a Medallion Architecture (Raw Ingestion ➔ Structured Warehouse ➔ Historical Audit).
+### 🏢 Step A: Workspace Foundation
+The process began by creating an **Azure Data Factory**, followed by provisioning the **"Azure Fabric Risk and Compliance"** workspace.
+
+*Create and Deploy Azure Data Factory*
+![Deploy Azure Data Factory](<Step 2c Data Factory Creation Deployment Successful.png>)
+
+*Initialize Microsoft Fabric Workspace within the Azure Portal*
+![Initialize Microsoft Fabric](<Step 3 Create Fabric Workspace.png>)
+
+*Provision "Azure Fabric Risk and Compliance" New workspace*
+![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
+
+🚀 Step B: Pipeline Orchestration
+The IAM_Enterprise_Ingestion_Pipeline serves as the primary engine responsible for secure OAuth2 handshakes with Salesforce and Jira.
+
+IAM Enterprise Ingestion Pipeline
+![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeine.png>)
+
+🛠️ Step C: Build Methodology
+Utilize a "Blank Canvas" approach with **Copy Job** activities to maintain granular control over parallelism.
+![IAM Blank Canvas](<Step 4a IAM Blank Canvas pipeline creation activity >)
+
+Adding the "Copy Data" activity to facilitate REST API extraction.
+![Data Copy Activity](<Step 4c Data copied renames and tag under general.png>)
+
+## 🔗 Establishing Enterprise SaaS Connectivity (Salesforce)
+Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
+
+🔌 Step A: Configuring the Salesforce Connector
+Establish using the **Salesforce Objects** connector for direct API communication.
+![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
+
+🛡️ Step B: Authentication & Source Verification
+Verify via **OAuth2** to extract specific identity attributes (Emails, Names, and Active Status).
+![Salesforce OAuth2](<5a Connection to Salesforce verification via source.png>)
 
 *Jira Integration Audit Logs Parallel Data Activity Copy*
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
+
+## 🛡️ Schema Resilience & Logic
 
 *RiskandCompliance New Query Creation*
 ![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
@@ -76,6 +113,8 @@ The core value proposition is the automated SQL Join that identifies unauthorize
 
 ```raw_jira_users_list```: The current active DevOps directory.
 ```sf_accounts```: The corporate HR/CRM source of truth.
+
+The "Identity Handshake" identifies unauthorized personnel through a LEFT JOIN between `raw_jira_users_list` and `sf_accounts`.
 
 ```sql
 SELECT 
