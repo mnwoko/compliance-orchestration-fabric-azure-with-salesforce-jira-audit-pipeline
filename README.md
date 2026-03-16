@@ -1,9 +1,6 @@
 # 🚀 End-to-End Compliance Orchestration: Scaling Salesforce-Jira Identity Audits with Azure ADLS Gen2 and Microsoft Fabric
 
 ---
-📖 Overview
-This project implements a scalable, automated Identity Governance and Administration (IGA) solution. By orchestrating data between Salesforce (Source of Truth) and Jira (Operational Access), this engine programmatically identifies "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated.
----
 ![Azure](https://img.shields.io/badge/Azure-Data%20Lake%20Gen2-blue?style=for-the-badge&logo=microsoft-azure)
 ![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-00A4EF?style=for-the-badge&logo=microsoft&logoColor=white)
 ![SQL Analytics](https://img.shields.io/badge/SQL-Analytics%20Endpoint-orange?style=for-the-badge)
@@ -51,3 +48,24 @@ IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.audit_
 BEGIN
     ALTER TABLE dbo.audit_history ADD IdentitySource VARCHAR(MAX);
 END
+```
+SELECT 
+    j.displayName AS [Jira_User], 
+    s.Name AS [Salesforce_Identity],
+    CASE 
+        WHEN s.Email IS NULL THEN 'UNAUTHORIZED: No CRM Match'
+        WHEN s.IsActive = 0 THEN 'CRITICAL: Terminated Employee'
+        ELSE 'COMPLIANT'
+    END AS [Audit_Status]
+FROM dbo.raw_jira_users_list j
+LEFT JOIN dbo.sf_accounts s ON j.emailAddress = s.Email
+WHERE s.Email IS NULL OR s.IsActive = 0;
+
+✅ Evidence of Success
+Final logs confirm a Succeeded status across the entire orchestration chain:
+
+📥 REST API Extraction: Completed successfully without payload drop-offs.
+
+🪣 Azure ADLS Gen2 Staging: Successfully buffered high-volume JSON arrays.
+
+🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
