@@ -59,10 +59,10 @@ IAM Enterprise Ingestion Pipeline
 
 🛠️ Step C: Build Methodology
 Utilize a "Blank Canvas" approach with **Copy Job** activities to maintain granular control over parallelism.
-![IAM Blank Canvas](<Step 4a IAM Blank Canvas pipeline creation activity >)
+![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
 Adding the "Copy Data" activity to facilitate REST API extraction.
-![Data Copy Activity](<Step 4c Data copied renames and tag under general.png>)
+![Data Copy Activity](<Step 4c Data copied rename and tag under general.png>)
 
 ## 🔗 Establishing Enterprise SaaS Connectivity (Salesforce)
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
