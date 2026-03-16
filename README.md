@@ -93,7 +93,7 @@ To ensure the pipeline never fails due to schema drift, this script runs at the 
 ![T-SQL Pre-Copy Script Execution](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
 *Schema Mapping
-![Schema Mapping](<Mapping import schema selection and removal of source needed for project.png>)
+![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
 
 ### 3️⃣ High-Performance Orchestration
 *Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination*
