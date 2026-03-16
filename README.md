@@ -40,7 +40,7 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Medallion Architecture** to ensure data integrity.
 
 ### 🏢 Step A: Workspace Foundation
-Create an **Azure Data Factory**, followed by provision **"Azure Fabric Risk and Compliance"** workspace.
+Create an **Azure Data Factory** then initialize **Microsoft Fabric Workspace**. Next, provision **"Azure Fabric Risk and Compliance"** workspace.
 
 *Create and Deploy Azure Data Factory*
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
