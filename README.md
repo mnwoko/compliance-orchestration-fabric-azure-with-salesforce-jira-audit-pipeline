@@ -37,10 +37,10 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 ---
 
 ## 🏗️ Environment Provising & Implementation Architecture
-Deployed within a unified Microsoft Fabric ecosystem, the environment follows a **Medallion Architecture** to ensure data integrity.
+Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Medallion Architecture** to ensure data integrity.
 
 ### 🏢 Step A: Workspace Foundation
-The process began by creating an **Azure Data Factory**, followed by provisioning the **"Azure Fabric Risk and Compliance"** workspace.
+Create an **Azure Data Factory**, followed by provision **"Azure Fabric Risk and Compliance"** workspace.
 
 *Create and Deploy Azure Data Factory*
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
@@ -52,7 +52,7 @@ The process began by creating an **Azure Data Factory**, followed by provisionin
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
 🚀 Step B: Pipeline Orchestration
-The IAM_Enterprise_Ingestion_Pipeline serves as the primary engine responsible for secure OAuth2 handshakes with Salesforce and Jira.
+IAM_Enterprise_Ingestion_Pipeline serves as primary engine responsible for secure OAuth2 handshakes with Salesforce and Jira.
 
 IAM Enterprise Ingestion Pipeline
 ![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
@@ -64,10 +64,10 @@ Utilize a "Blank Canvas" approach with **Copy Job** activities to maintain granu
 Adding the "Copy Data" activity to facilitate REST API extraction.
 ![Data Copy Activity](<Step 4c Data copied rename and tag under general.png>)
 
-## 🔗 Establishing Enterprise SaaS Connectivity (Salesforce)
+## 🔗 Establish Enterprise SaaS Connectivity (Salesforce)
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
 
-🔌 Step A: Configuring the Salesforce Connector
+🔌 Step A: Configure Salesforce Connector
 Establish using the **Salesforce Objects** connector for direct API communication.
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
@@ -87,7 +87,7 @@ Verify via **OAuth2** to extract specific identity attributes (Emails, Names, an
 ![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
 
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
-To ensure the pipeline never fails due to schema drift, this script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
+Ensure pipeline never fails due to schema drift. The script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
 *T-SQL Pre-Copy Script Execution*
 ![T-SQL Pre-Copy Script Execution](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
@@ -111,7 +111,7 @@ END
 The core value proposition is the automated SQL Join that identifies unauthorized personnel by comparing two primary tables:
 
 ```raw_jira_users_list```: The current active DevOps directory.
-```sf_accounts```: The corporate HR/CRM source of truth.
+```sf_accounts```: The corporate CRM source of truth.
 
 The "Identity Handshake" identifies unauthorized personnel through a LEFT JOIN between `raw_jira_users_list` and `sf_accounts`.
 
@@ -129,13 +129,9 @@ LEFT JOIN dbo.sf_accounts s ON j.emailAddress = s.Email
 WHERE s.Email IS NULL OR s.IsActive = 0;
 ```
 
-
-
 ✅ Evidence of Success
 Final logs confirm a Succeeded status across the entire orchestration chain:
 
 📥 REST API Extraction: Completed successfully without payload drop-offs.
-
 🪣 Azure ADLS Gen2 Staging: Successfully buffered high-volume JSON arrays.
-
 🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
