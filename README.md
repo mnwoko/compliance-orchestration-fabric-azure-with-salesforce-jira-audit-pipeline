@@ -92,13 +92,6 @@ To ensure the pipeline never fails due to schema drift, this script runs at the 
 *T-SQL Pre-Copy Script Execution*
 ![T-SQL Pre-Copy Script Execution](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
-*Schema Mapping
-![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
-
-### 3️⃣ High-Performance Orchestration
-*Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination*
-![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
-
 ```sql
 /* Automated Schema Validation */
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.audit_history') AND name = 'IdentitySource')
@@ -106,6 +99,12 @@ BEGIN
     ALTER TABLE dbo.audit_history ADD IdentitySource VARCHAR(MAX);
 END
 ```
+*Schema Mapping
+![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
+
+### 3️⃣ High-Performance Orchestration
+*Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination*
+![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
 
 ---
 🔍 The Audit Logic: "Ghost User" Detection
