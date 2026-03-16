@@ -10,7 +10,7 @@
 This project implements a scalable, automated **Identity Governance and Administration (IGA)** solution. By orchestrating data between **Salesforce** (Source of Truth) and **Jira** (Operational Access), this engine programmatically identifies "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated.
 
 ---
-⚡ Key Features
+##⚡ Key Features
 Automated Data Ingestion: Uses Azure Fabric Data Factory to pull from Salesforce (CRM) and Jira (DevOps) REST APIs.
 Schema Resilience: T-SQL guardrails to ensure consistent metadata across ingestion cycles.
 Audit Archiving: Automatic snapshotting of user states into an audit_history table for SOC2/ISO 27001 compliance.
@@ -49,6 +49,9 @@ The framework is deployed within a Fabric Workspace using a dedicated **`Riskand
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
 To ensure the pipeline never fails due to schema drift, this script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
+*Schema Mapping
+![Schema Mapping](./assets/schema-mapping.png)
+
 *(<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png> )*
 ![T-SQL Pre-Copy Script Execution](./assets/Step_16k_prescript_troubleshoot_SQL.png)
 
@@ -64,6 +67,13 @@ BEGIN
 END
 ```
 
+---
+🔍 The Audit Logic: "Ghost User" Detection
+The core value proposition is the automated SQL Join that identifies unauthorized personnel by comparing two primary tables:
+
+```raw_jira_users_list```: The current active DevOps directory.
+```sf_accounts```: The corporate HR/CRM source of truth.
+
 ```sql
 SELECT 
     j.displayName AS [Jira_User], 
@@ -77,6 +87,9 @@ FROM dbo.raw_jira_users_list j
 LEFT JOIN dbo.sf_accounts s ON j.emailAddress = s.Email
 WHERE s.Email IS NULL OR s.IsActive = 0;
 ```
+
+
+
 ✅ Evidence of Success
 Final logs confirm a Succeeded status across the entire orchestration chain:
 
