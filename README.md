@@ -40,6 +40,9 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 ### 1️⃣ Environment Provisioning
 The framework is deployed within a Fabric Workspace using a dedicated **`RiskandCompliance`** Warehouse. The data follows a Medallion Architecture (Raw Ingestion ➔ Structured Warehouse ➔ Historical Audit).
 
+*Jira Integration Audit Logs Parallel Data Activity Copy*
+![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
+
 *RiskandCompliance New Query Creation*
 ![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
 
@@ -49,11 +52,11 @@ The framework is deployed within a Fabric Workspace using a dedicated **`Riskand
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
 To ensure the pipeline never fails due to schema drift, this script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
-*Schema Mapping
-![Schema Mapping](./assets/schema-mapping.png)
-
-*Jira Integration Audit Logs Parallel Data Activity Copy*
+*T-SQL Pre-Copy Script Execution*
 ![T-SQL Pre-Copy Script Execution](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
+
+*Schema Mapping
+![Schema Mapping](<Mapping import schema selection and removal of source needed for project.png>)
 
 ### 3️⃣ High-Performance Orchestration
 *Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination*
