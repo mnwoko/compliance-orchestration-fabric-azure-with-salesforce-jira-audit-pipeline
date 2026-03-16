@@ -40,11 +40,11 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 ### 1️⃣ Environment Provisioning
 The framework is deployed within a Fabric Workspace using a dedicated **`RiskandCompliance`** Warehouse. The data follows a Medallion Architecture (Raw Ingestion ➔ Structured Warehouse ➔ Historical Audit).
 
-*(Add your Step 15 a or Step 15i Settings image here)*
-![```RiskandCompliance```  ```s-faccounts``` New Query Creation](./assets/Step_16_ia_Settings_pipeline_validation_and_run_success.png)
+*RiskandCompliance New Query Creation*
+![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
 
-*(<Step 15 Jira Integration Audit Logs Parallel Data Activity Copy.png> )*
-![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](./assets/Step_15_risk_troubleshoot_SQL.png)
+*RiskandCompliance sfaccounts SQL Creation*
+![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
 
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
 To ensure the pipeline never fails due to schema drift, this script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
@@ -52,12 +52,12 @@ To ensure the pipeline never fails due to schema drift, this script runs at the 
 *Schema Mapping
 ![Schema Mapping](./assets/schema-mapping.png)
 
-*(<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png> )*
-![T-SQL Pre-Copy Script Execution](./assets/Step_16k_prescript_troubleshoot_SQL.png)
+*Jira Integration Audit Logs Parallel Data Activity Copy*
+![T-SQL Pre-Copy Script Execution](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
 ### 3️⃣ High-Performance Orchestration
-*(Add your Step 16g Mapping image here to show how you flattened the JSON)*
-![REST API Schema Mapping](./assets/Step_16g_Mapping_import_schema.png)
+*Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination*
+![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
 
 ```sql
 /* Automated Schema Validation */
