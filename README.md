@@ -73,7 +73,7 @@ Establish using the **Salesforce Objects** connector for direct API communicatio
 
 🛡️ Step B: Authentication & Source Verification
 Verify via **OAuth2** to extract specific identity attributes (Emails, Names, and Active Status).
-![Salesforce OAuth2](<5a Connection to Salesforce verification via source.png>)
+![Salesforce OAuth2](<Step 5a Connection to Salesforce verifcation via source.png>)
 
 *Jira Integration Audit Logs Parallel Data Activity Copy*
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
