@@ -54,7 +54,7 @@ Create an **Azure Data Factory** then initialize **Microsoft Fabric Workspace**.
 🚀 Step B: Pipeline Orchestration
 IAM_Enterprise_Ingestion_Pipeline serves as primary engine responsible for secure OAuth2 handshakes with Salesforce and Jira.
 
-IAM Enterprise Ingestion Pipeline
+**IAM Enterprise Ingestion Pipeline**
 ![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
 
 🛠️ Step C: Build Methodology
