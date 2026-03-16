@@ -43,10 +43,10 @@ Deployed within a unified Microsoft Fabric ecosystem, the environment follows a 
 The process began by creating an **Azure Data Factory**, followed by provisioning the **"Azure Fabric Risk and Compliance"** workspace.
 
 *Create and Deploy Azure Data Factory*
-![Deploy Azure Data Factory](<Step 2c Data Factory Creation Deployment Successful.png>)
+![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
 *Initialize Microsoft Fabric Workspace within the Azure Portal*
-![Initialize Microsoft Fabric](<Step 3 Create Fabric Workspace.png>)
+![Initialize Microsoft Fabric](<Step 3 create fabric workspace.png>)
 
 *Provision "Azure Fabric Risk and Compliance" New workspace*
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
@@ -55,7 +55,7 @@ The process began by creating an **Azure Data Factory**, followed by provisionin
 The IAM_Enterprise_Ingestion_Pipeline serves as the primary engine responsible for secure OAuth2 handshakes with Salesforce and Jira.
 
 IAM Enterprise Ingestion Pipeline
-![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeine.png>)
+![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
 
 🛠️ Step C: Build Methodology
 Utilize a "Blank Canvas" approach with **Copy Job** activities to maintain granular control over parallelism.
