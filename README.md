@@ -22,6 +22,7 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 * **⏱️ Scheduled Extraction:** Fabric Pipelines automate OAuth2 handshakes and REST API extraction from global SaaS endpoints.
 * **🛡️ Self-Healing Infrastructure:** A T-SQL pre-copy script automatically validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
 * **📈 Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Gen2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
+
 * **🧠 Programmatic Reconciliation:** T-SQL logic automatically joins disparate datasets to flag "Access Drift" without human intervention.
 
 ---
@@ -39,8 +40,21 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 ### 1️⃣ Environment Provisioning
 The framework is deployed within a Fabric Workspace using a dedicated **`RiskandCompliance`** Warehouse. The data follows a Medallion Architecture (Raw Ingestion ➔ Structured Warehouse ➔ Historical Audit).
 
+*(Add your Step 15 a or Step 15i Settings image here)*
+![```RiskandCompliance```  ```s-faccounts``` New Query Creation](./assets/Step_16_ia_Settings_pipeline_validation_and_run_success.png)
+
+*(<Step 15 Jira Integration Audit Logs Parallel Data Activity Copy.png> )*
+![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](./assets/Step_15_risk_troubleshoot_SQL.png)
+
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
 To ensure the pipeline never fails due to schema drift, this script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
+
+*(<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png> )*
+![T-SQL Pre-Copy Script Execution](./assets/Step_16k_prescript_troubleshoot_SQL.png)
+
+### 3️⃣ High-Performance Orchestration
+*(Add your Step 16g Mapping image here to show how you flattened the JSON)*
+![REST API Schema Mapping](./assets/Step_16g_Mapping_import_schema.png)
 
 ```sql
 /* Automated Schema Validation */
@@ -49,7 +63,8 @@ BEGIN
     ALTER TABLE dbo.audit_history ADD IdentitySource VARCHAR(MAX);
 END
 ```
-```
+
+```sql
 SELECT 
     j.displayName AS [Jira_User], 
     s.Name AS [Salesforce_Identity],
