@@ -49,6 +49,7 @@ BEGIN
     ALTER TABLE dbo.audit_history ADD IdentitySource VARCHAR(MAX);
 END
 ```
+```
 SELECT 
     j.displayName AS [Jira_User], 
     s.Name AS [Salesforce_Identity],
@@ -60,7 +61,7 @@ SELECT
 FROM dbo.raw_jira_users_list j
 LEFT JOIN dbo.sf_accounts s ON j.emailAddress = s.Email
 WHERE s.Email IS NULL OR s.IsActive = 0;
-
+```
 ✅ Evidence of Success
 Final logs confirm a Succeeded status across the entire orchestration chain:
 
