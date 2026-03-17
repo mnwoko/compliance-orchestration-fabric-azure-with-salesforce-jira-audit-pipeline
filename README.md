@@ -135,7 +135,7 @@ END
 
 ---
 ### 🔍 The Audit Logic: "Ghost User" Detection###
-The core value proposition is the automated SQL Join that identifies unauthorized personnel by comparing two primary tables:
+Automated SQL Join that identifies unauthorized personnel by comparing two primary tables:
 
 ```raw_jira_users_list```: The current active DevOps directory.
 ```sf_accounts```: The corporate CRM source of truth.
@@ -156,7 +156,7 @@ LEFT JOIN dbo.sf_accounts s ON j.emailAddress = s.Email
 WHERE s.Email IS NULL OR s.IsActive = 0;
 ```
 ---
-✅ Evidence of Success
+### ✅ Evidence of Success
 Final logs confirm a Succeeded status across the entire orchestration chain:
 
 📥 REST API Extraction: Completed successfully without payload drop-offs.
@@ -165,7 +165,7 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 
 🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
 ---
-## 📂 Project Structure
+### 📂 Project Structure
 
 ```text
 ├── assets/               # System screenshots and evidence
@@ -177,26 +177,26 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 └── .gitignore            # Git exclusion rules
 ```
 ---
-🛠️ Tech Stack & Infrastructure
+### 🛠️ Tech Stack & Infrastructure
 The architecture leverages a hybrid of Azure Cloud and Microsoft Fabric (SaaS) to ensure high availability, security, and performance.
 
-Data Orchestration & Engineering
+## Data Orchestration & Engineering
 Microsoft Fabric Data Factory: Orchestrates the ingestion of user directories from global REST API endpoints.
 
-Azure Data Lake Storage (ADLS) Generation 2: Serves as the primary staging layer to mitigate write-batch timeouts and handle high-volume JSON arrays.
+**Azure Data Lake Storage (ADLS) Generation 2:** Serves as the primary staging layer to mitigate write-batch timeouts and handle high-volume JSON arrays.
 
-Degree of Copy Parallelism: Configured to enable multi-threaded extraction for enterprise-scale directory synchronization.
+**Degree of Copy Parallelism:** Configured to enable multi-threaded extraction for enterprise-scale directory synchronization.
 
-Storage & Analytics (Medallion Architecture)
-Fabric Lakehouse (Bronze Layer): Captures raw API responses for non-repudiation and forensic audit logs.
+## Storage & Analytics (Medallion Architecture)
+**Fabric Lakehouse (Bronze Layer):** Captures raw API responses for non-repudiation and forensic audit logs.
 
-Fabric Warehouse (Silver/Gold Layer): Provides a structured T-SQL environment for identity reconciliation and long-term archiving.
+**Fabric Warehouse (Silver/Gold Layer):** Provides a structured T-SQL environment for identity reconciliation and long-term archiving.
 
-Delta Lake: Ensures ACID-compliant transactions for all identity snapshots.
+**Delta Lake:** Ensures ACID-compliant transactions for all identity snapshots.
 
-Security & Identity
-OAuth 2.0: Secure authentication protocol used to establish connections with Salesforce and Jira.
+## Security & Identity**
+**OAuth 2.0:** Secure authentication protocol used to establish connections with Salesforce and Jira.
 
-T-SQL Guardrails: Programmatic scripts used for schema resilience and automated access-drift detection.
+**T-SQL Guardrails:** Programmatic scripts used for schema resilience and automated access-drift detection.
 
-RBAC (Role-Based Access Control): Managed within the Fabric Workspace to secure sensitive compliance data.
+**RBAC (Role-Based Access Control):** Managed within the Fabric Workspace to secure sensitive compliance data.
