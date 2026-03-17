@@ -164,6 +164,7 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 🪣 Azure ADLS Gen2 Staging: Successfully buffered high-volume JSON arrays.
 
 🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
+
 ---
 ### 📂 Project Structure
 
