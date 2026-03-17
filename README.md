@@ -179,10 +179,10 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 ```
 ---
 ### 🛠️ Tech Stack & Infrastructure
-The architecture leverages a hybrid of Azure Cloud and Microsoft Fabric (SaaS) to ensure high availability, security, and performance.
+A hybrid of Azure Cloud and Microsoft Fabric (SaaS) Architecture to ensure high availability, security, and performance.
 
 ## Data Orchestration & Engineering
-Microsoft Fabric Data Factory: Orchestrates the ingestion of user directories from global REST API endpoints.
+**Microsoft Fabric Data Factory:** Orchestrates the ingestion of user directories from global REST API endpoints.
 
 **Azure Data Lake Storage (ADLS) Generation 2:** Serves as the primary staging layer to mitigate write-batch timeouts and handle high-volume JSON arrays.
 
@@ -195,7 +195,7 @@ Microsoft Fabric Data Factory: Orchestrates the ingestion of user directories fr
 
 **Delta Lake:** Ensures ACID-compliant transactions for all identity snapshots.
 
-## Security & Identity**
+## Security & Identity
 **OAuth 2.0:** Secure authentication protocol used to establish connections with Salesforce and Jira.
 
 **T-SQL Guardrails:** Programmatic scripts used for schema resilience and automated access-drift detection.
