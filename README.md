@@ -54,7 +54,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
-###🚀 Step B: Pipeline Orchestration
+### 🚀 Step B: Pipeline Orchestration
  
 **IAM Enterprise Ingestion Pipeline** OAuth2 with Salesforce and Jira
 
