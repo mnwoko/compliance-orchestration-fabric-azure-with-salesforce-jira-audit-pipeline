@@ -43,27 +43,33 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 **Azure Data Factory Creation** then initialize **Microsoft Fabric Workspace**. 
 
 **Deploy Azure Data Factory**
+
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
 **Initialize Microsoft Fabric Workspace**
+
 ![Initialize Microsoft Fabric](<Step 3 create fabric workspace.png>)
 
 Next, provision **"Azure Fabric Risk and Compliance"** workspace.
 
 **Provision **Azure Fabric Risk and Compliance** New workspace**
+
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
 🚀 Step B: Pipeline Orchestration
 IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes with Salesforce and Jira.
 
 **IAM Enterprise Ingestion Pipeline**
+
 ![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
 
 🛠️ Step C: Build Methodology
+
 **Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities.
 ![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
 **Add "Copy Data" Activity for REST API extraction**
+
 ![Data Copy Activity](<Step 4c Data copied rename and tag under general.png>)
 
 ## 🔗 Establish Enterprise SaaS Connectivity (Salesforce)
@@ -71,27 +77,32 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 🔌 Step A: Configure Salesforce Connector
 **Establish **Salesforce Objects** connector for API communication**
+
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
 🛡️ Step B: Authentication & Source Verification
 **Verify **OAuth2** Extraction**
+
 ![Salesforce OAuth2](<Step 5a Connection to Salesforce verifcation via source.png>)
 
 **Jira Integration Audit Logs Parallel Data Activity Copy**
+
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
 ## 🛡️ Schema Resilience & Logic
 
 **RiskandCompliance New Query Creation**
+
 ![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
 
-**RiskandCompliance sfaccounts SQL Creation**
+**RiskandCompliance `sfaccounts` SQL Creation**
+
 ![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
 
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
 Ensure pipeline never fails due to schema drift. The script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
-**T-SQL Pre-Copy Script Execution**
+**SQL Pre-Copy Script**
 ```sql
 /* Automated Schema Validation */
 -- 1. Ensure the history table is ready for the archive
@@ -109,13 +120,17 @@ BEGIN
     END
 END
 ```
+**T-SQL Pre-Copy Script Execution**
+
 ![T-SQL Pre-Copy Script Execution](<Step 16.a Pre-copy script SQL Identity Source.png>)
 
 **Schema Mapping**
+
 ![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
 
 ### 3️⃣ High-Performance Orchestration
-*Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination*
+**Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination**
+
 ![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
 
 ---
@@ -145,5 +160,7 @@ WHERE s.Email IS NULL OR s.IsActive = 0;
 Final logs confirm a Succeeded status across the entire orchestration chain:
 
 📥 REST API Extraction: Completed successfully without payload drop-offs.
+
 🪣 Azure ADLS Gen2 Staging: Successfully buffered high-volume JSON arrays.
+
 🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
