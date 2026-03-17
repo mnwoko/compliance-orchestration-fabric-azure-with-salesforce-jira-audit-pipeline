@@ -36,10 +36,10 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 ---
 
 ## 🛠️ Core Technologies
-* ** Microsoft Fabric:** Unified analytics platform for data residency and compute.
-* ** Azure Data Lake Storage (ADLS) Gen2:** High-performance staging layer for reliable ingestion.
-* ** Fabric Lakehouse & Warehouse:** Storage layers utilizing **Delta tables** to ensure ACID-compliant snapshots.
-* ** SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
+* **Microsoft Fabric:** Unified analytics platform for data residency and compute.
+* **Azure Data Lake Storage (ADLS) Gen2:** High-performance staging layer for reliable ingestion.
+* **Fabric Lakehouse & Warehouse:** Storage layers utilizing **Delta tables** to ensure ACID-compliant snapshots.
+* **SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
 
 ---
 
