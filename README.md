@@ -60,7 +60,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
 
-🛠️ Step C: Build Methodology
+### 🛠️ Step C: Build Methodology
 
 **Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities
 
@@ -73,13 +73,13 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 ## 🔗 Establish Enterprise SaaS Connectivity (Salesforce)
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
 
-###🔌 Step A: Configure Salesforce Connector
+### 🔌 Step A: Configure Salesforce Connector
 
 **Establish **Salesforce Objects** connector for API communication**
 
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
-###🛡️ Step B: Authentication & Source Verification
+### 🛡️ Step B: Authentication & Source Verification
 
 **Verify **OAuth2** Extraction**
 
@@ -89,7 +89,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
-## 🛡️ Step A: Schema Resilience & Logic
+### 🛡️ Step C: Schema Resilience & Logic
 
 **Risk and Compliance New Query Creation**
 
@@ -99,7 +99,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
 
-### 🛡️ Step B: Schema Resilience (Pre-Copy Script)
+### 🛡️ Step D: Schema Resilience (Pre-Copy Script)
 
 Ensure pipeline never fails due to schema drift. The script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
@@ -129,7 +129,7 @@ END
 
 ![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
 
-### 🛡️ Step C: High-Performance Orchestration
+### 🛡️ Step E: High-Performance Orchestration
 **Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination**
 
 ![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
