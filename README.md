@@ -55,9 +55,8 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
 ###🚀 Step B: Pipeline Orchestration
-IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes with Salesforce and Jira.
-
-**IAM Enterprise Ingestion Pipeline**
+ 
+**IAM Enterprise Ingestion Pipeline** OAuth2 with Salesforce and Jira
 
 ![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
 
@@ -100,7 +99,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
 
-### 2️⃣ Schema Resilience (Pre-Copy Script)
+### 🛡️ Step B: Schema Resilience (Pre-Copy Script)
 
 Ensure pipeline never fails due to schema drift. The script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
@@ -130,7 +129,7 @@ END
 
 ![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
 
-### 3️⃣ High-Performance Orchestration
+### 🛡️ Step C: High-Performance Orchestration
 **Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination**
 
 ![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
