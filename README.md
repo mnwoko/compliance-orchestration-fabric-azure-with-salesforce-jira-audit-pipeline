@@ -12,37 +12,36 @@ This project implements a scalable, automated **Identity Governance and Administ
 
 ---
 ## ✨ Key Features
-* **🔄 End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
-* **📂 Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer decoupling extraction from the warehouse write process, eliminating "Write Batch Timeouts."
-* **⚡ Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
-* **🛡️ Self-Healing Schema Resilience:** Employs an automated **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
-* **🔍 Programmatic "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
-* **📜 Immutable Audit Archiving:** PFoint-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
+* ** End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
+* ** Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer decoupling extraction from the warehouse write process, eliminating "Write Batch Timeouts."
+* ** Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
+* ** Self-Healing Schema Resilience:** Employs an automated **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
+* ** Programmatic "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
+* ** Immutable Audit Archiving:** PFoint-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
 ---
 ## 🤖 Automated Workflows
 This solution moves beyond manual spreadsheets by automating the entire data lifecycle:
-* **⏱️ Scheduled Extraction:** Fabric Pipelines automate OAuth2 handshakes and REST API extraction from global SaaS endpoints.
-* **🛡️ Self-Healing Infrastructure:** A T-SQL pre-copy script automatically validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
-* **📈 Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Gen2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
+* ** Scheduled Extraction:** Fabric Pipelines automate OAuth2 handshakes and REST API extraction from global SaaS endpoints.
+* ** Self-Healing Infrastructure:** A T-SQL pre-copy script automatically validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
+* ** Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Gen2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
 
-* **🧠 Programmatic Reconciliation:** T-SQL logic automatically joins disparate datasets to flag "Access Drift" without human intervention.
+* ** Programmatic Reconciliation:** T-SQL logic automatically joins disparate datasets to flag "Access Drift" without human intervention.
 
 ---
 
 ## 🛠️ Core Technologies
-* **☁️ Microsoft Fabric:** Unified analytics platform for data residency and compute.
-* **🗄️ Azure Data Lake Storage (ADLS) Gen2:** High-performance staging layer for reliable ingestion.
-* **🌊 Fabric Lakehouse & Warehouse:** Storage layers utilizing **Delta tables** to ensure ACID-compliant snapshots.
-* **⚙️ SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
+* ** Microsoft Fabric:** Unified analytics platform for data residency and compute.
+* ** Azure Data Lake Storage (ADLS) Gen2:** High-performance staging layer for reliable ingestion.
+* ** Fabric Lakehouse & Warehouse:** Storage layers utilizing **Delta tables** to ensure ACID-compliant snapshots.
+* ** SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
 
 ---
 
 ## 🏗️ Environment Provising & Implementation Architecture
 Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Medallion Architecture** to ensure data integrity.
 
-### 🏢 Step A: Workspace Foundation
+### 🛡️ Step A: Workspace Foundation
 **Azure Data Factory Creation**  
-
 
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
@@ -54,15 +53,15 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
-### 🚀 Step B: Pipeline Orchestration
+### 🛡️ Step B: Pipeline Orchestration
  
 **IAM Enterprise Ingestion Pipeline** OAuth2 with Salesforce and Jira
 
 ![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
 
-### 🛠️ Step C: Build Methodology
+### 🛡️Step C: Build Methodology
 
-**Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities
+**Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities🛠️
 
 ![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
@@ -73,7 +72,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 ## 🔗 Establish Enterprise SaaS Connectivity (Salesforce)
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
 
-### 🔌 Step A: Configure Salesforce Connector
+### 🛡️ Step A: Configure Salesforce Connector
 
 **Establish **Salesforce Objects** connector for API communication**
 
@@ -156,7 +155,7 @@ FROM dbo.raw_jira_users_list j
 LEFT JOIN dbo.sf_accounts s ON j.emailAddress = s.Email
 WHERE s.Email IS NULL OR s.IsActive = 0;
 ```
-
+---
 ✅ Evidence of Success
 Final logs confirm a Succeeded status across the entire orchestration chain:
 
@@ -165,7 +164,7 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 🪣 Azure ADLS Gen2 Staging: Successfully buffered high-volume JSON arrays.
 
 🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
-
+---
 ## 📂 Project Structure
 
 ```text
@@ -176,3 +175,28 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 ├── pipelines/            # Fabric pipeline JSON exports
 ├── README.md             # Project documentation
 └── .gitignore            # Git exclusion rules
+```
+---
+🛠️ Tech Stack & Infrastructure
+The architecture leverages a hybrid of Azure Cloud and Microsoft Fabric (SaaS) to ensure high availability, security, and performance.
+
+Data Orchestration & Engineering
+Microsoft Fabric Data Factory: Orchestrates the ingestion of user directories from global REST API endpoints.
+
+Azure Data Lake Storage (ADLS) Generation 2: Serves as the primary staging layer to mitigate write-batch timeouts and handle high-volume JSON arrays.
+
+Degree of Copy Parallelism: Configured to enable multi-threaded extraction for enterprise-scale directory synchronization.
+
+Storage & Analytics (Medallion Architecture)
+Fabric Lakehouse (Bronze Layer): Captures raw API responses for non-repudiation and forensic audit logs.
+
+Fabric Warehouse (Silver/Gold Layer): Provides a structured T-SQL environment for identity reconciliation and long-term archiving.
+
+Delta Lake: Ensures ACID-compliant transactions for all identity snapshots.
+
+Security & Identity
+OAuth 2.0: Secure authentication protocol used to establish connections with Salesforce and Jira.
+
+T-SQL Guardrails: Programmatic scripts used for schema resilience and automated access-drift detection.
+
+RBAC (Role-Based Access Control): Managed within the Fabric Workspace to secure sensitive compliance data.
