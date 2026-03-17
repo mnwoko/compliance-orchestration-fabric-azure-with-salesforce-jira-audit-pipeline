@@ -1,5 +1,5 @@
 # 🚀 End-to-End Compliance Orchestration: 
-### Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation
+### Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation 2
 ---
 ![Azure](https://img.shields.io/badge/Azure-Data%20Lake%20Gen2-blue?style=for-the-badge&logo=microsoft-azure)
 ![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-00A4EF?style=for-the-badge&logo=microsoft&logoColor=white)
@@ -16,10 +16,10 @@ This project implements a scalable, automated Identity Governance and Administra
 - Enabled real-time detection of unauthorized ("Ghost") users
 - Created a scalable audit framework for enterprise IAM governance
 - Strengthened SOC2 and ISO 27001 compliance posture
-
+---
 ## ✨ Key Capabilities
 * **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
-* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse "Write Batch Timeouts."
+* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse writes to eliminate "Write Batch Timeouts."
 * **Parallel Processing:** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
 * **Self-Healing Schema Resilience:**  **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
 * **Automated "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
@@ -50,7 +50,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
-**Provision **Azure Fabric Risk and Compliance** New workspace**
+**Provision Azure Fabric Risk and Compliance Workspace**
 
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
@@ -62,7 +62,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ### 🛡️Step C: Build Methodology
 
-**Start Blank Canvas Pipeline Activity** then **Copy Job** activities
+**Start with a blank pipeline canvas, then configure Copy Data activities** activities
 
 ![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
@@ -75,13 +75,13 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ### 🛡️ Step A: Configure Salesforce Connector
 
-**Establish **Salesforce Objects** connector for API communication**
+**Establish Salesforce Objects connector for API communication**
 
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
 ### 🛡️ Step B: Authentication & Source Verification
 
-**Verify **OAuth2** Extraction**
+**Verify OAuth2 Extraction**
 
 ![Salesforce OAuth2](<Step 5a Connection to Salesforce verifcation via source.png>)
 
@@ -126,12 +126,13 @@ END
 ![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
 
 ### 🛡️ Step E: High-Performance Orchestration
-**Parallelism/REST API/ Azure Data Lake Storage Gen2 Staging and Azure Warehouse Destination**
+
+**Parallelism / REST API / ADLS Gen2 Staging / Warehouse Destination**
 
 ![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
 
 ---
-### 🔍 The Audit Logic: "Ghost User" Detection###
+### 🔍 The Audit Logic: "Ghost User" Detection
 Automated SQL Join that identifies unauthorized personnel by comparing two primary tables:
 
 ```raw_jira_users_list```: The current active DevOps directory.
@@ -179,8 +180,8 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 
 ## Data Orchestration & Engineering
 * **Microsoft Fabric Data Factory**
-* **Azure Data Lake Storage (ADLS) Generation** 
-* **Copy Parallel Copy Processing**
+* **Azure Data Lake Storage (ADLS) Generation 2**
+* **Parallel Copy Processing**
 
 ## Storage & Analytics (Medallion Architecture)
 * **Fabric Lakehouse (Bronze Layer)** 
