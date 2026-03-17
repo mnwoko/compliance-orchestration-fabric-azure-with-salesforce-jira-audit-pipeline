@@ -1,5 +1,5 @@
 # 🚀 End-to-End Compliance Orchestration: 
-Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation2 
+### Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation 2 
 ---
 ![Azure](https://img.shields.io/badge/Azure-Data%20Lake%20Gen2-blue?style=for-the-badge&logo=microsoft-azure)
 ![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-00A4EF?style=for-the-badge&logo=microsoft&logoColor=white)
@@ -16,7 +16,7 @@ This project implements a scalable, automated **Identity Governance and Administ
 - Enabled real-time detection of unauthorized ("Ghost") users
 - Created a scalable audit framework for enterprise IAM governance
 
---- Strengthened SOC2 and ISO 27001 compliance posture
+- Strengthened SOC2 and ISO 27001 compliance posture
 ## ✨ Key Capabilities
 * **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
 * **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse eliminating "Write Batch Timeouts."
@@ -196,7 +196,7 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 * **Fabric Lakehouse (Bronze Layer)** 
 * **Fabric Warehouse (Silver/Gold Layer)** 
 
-* **Delta Lake )ACID transactions)**
+* **Delta Lake (ACID transactions)**
 
 ## Security & Identity
 * **OAuth 2.0 authentication** 
