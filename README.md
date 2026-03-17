@@ -12,12 +12,12 @@ This project implements a scalable, automated **Identity Governance and Administ
 
 ---
 ## ✨ Key Features
-* **🔄 End-to-End Compliance Orchestration:** Automates data lifecycle—from secure REST API extraction to final risk reconciliation in SQL Warehouse.
-* **📂 Scalable Ingestion via Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer decoupling extraction from the warehouse write process, eliminating "Write Batch Timeouts."
-* **⚡ Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** within Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
+* **🔄 End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
+* **📂 Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer decoupling extraction from the warehouse write process, eliminating "Write Batch Timeouts."
+* **⚡ Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
 * **🛡️ Self-Healing Schema Resilience:** Employs an automated **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
-* **🔍 Programmatic "Ghost User" Detection:** Features a reconciliation engine that joins disparate datasets to automatically flag terminated or unauthorized accounts.
-* **📜 Immutable Audit Archiving:** Implements point-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
+* **🔍 Programmatic "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
+* **📜 Immutable Audit Archiving:** PFoint-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
 ---
 ## 🤖 Automated Workflows
 This solution moves beyond manual spreadsheets by automating the entire data lifecycle:
