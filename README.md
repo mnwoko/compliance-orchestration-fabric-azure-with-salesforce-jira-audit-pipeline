@@ -91,10 +91,6 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ### 🛡️ Step C: Schema Resilience & Logic
 
-**Risk and Compliance New Query Creation**
-
-![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
-
 **Risk and Compliance `sf_accounts` SQL Creation**
 
 ![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
