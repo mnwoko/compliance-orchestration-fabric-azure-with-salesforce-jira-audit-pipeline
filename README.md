@@ -63,7 +63,7 @@ IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes w
 
 🛠️ Step C: Build Methodology
 
-**Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities.
+**Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities
 
 ![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
