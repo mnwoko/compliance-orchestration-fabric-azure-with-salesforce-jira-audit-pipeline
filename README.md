@@ -42,7 +42,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 ### 🏢 Step A: Workspace Foundation
 **Azure Data Factory Creation** then initialize **Microsoft Fabric Workspace**. 
 
-**Deploy Azure Data Factory**
+                            **Deploy Azure Data Factory**
 
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
