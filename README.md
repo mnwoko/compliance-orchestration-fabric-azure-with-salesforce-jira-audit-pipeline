@@ -61,11 +61,11 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ### 🛡️Step C: Build Methodology
 
-**Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities🛠️
+**Start Blank Canvas Pipeline Activity** then **Copy Job** activities
 
 ![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
-**Add "Copy Data" Activity for REST API extraction**
+**Copy Data Activity for REST API extraction**
 
 ![Data Copy Activity](<Step 4c Data copied rename and tag under general.png>)
 
