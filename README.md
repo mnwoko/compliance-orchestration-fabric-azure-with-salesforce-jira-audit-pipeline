@@ -1,5 +1,5 @@
 # 🚀 End-to-End Compliance Orchestration: 
-### Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation 2 
+### Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation
 ---
 ![Azure](https://img.shields.io/badge/Azure-Data%20Lake%20Gen2-blue?style=for-the-badge&logo=microsoft-azure)
 ![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-00A4EF?style=for-the-badge&logo=microsoft&logoColor=white)
