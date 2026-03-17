@@ -42,7 +42,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 ### 🏢 Step A: Workspace Foundation
 Create an **Azure Data Factory** then initialize **Microsoft Fabric Workspace**. Next, provision **"Azure Fabric Risk and Compliance"** workspace.
 
-*Create and Deploy Azure Data Factory*
+**Create and Deploy Azure Data Factory**
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
 *Initialize Microsoft Fabric Workspace within the Azure Portal*
@@ -52,54 +52,64 @@ Create an **Azure Data Factory** then initialize **Microsoft Fabric Workspace**.
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
 🚀 Step B: Pipeline Orchestration
-IAM_Enterprise_Ingestion_Pipeline serves as primary engine responsible for secure OAuth2 handshakes with Salesforce and Jira.
+IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes with Salesforce and Jira.
 
 **IAM Enterprise Ingestion Pipeline**
 ![IAM Enterprise Ingestion Pipeline](<Step 4 New IAM Enterprise Ingestion Pipeline.png>)
 
 🛠️ Step C: Build Methodology
-Utilize a "Blank Canvas" approach with **Copy Job** activities to maintain granular control over parallelism.
+**Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities to maintain granular control over parallelism.
 ![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
-Adding the "Copy Data" activity to facilitate REST API extraction.
+**Add "Copy Data" Activity for REST API extraction**
 ![Data Copy Activity](<Step 4c Data copied rename and tag under general.png>)
 
 ## 🔗 Establish Enterprise SaaS Connectivity (Salesforce)
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
 
 🔌 Step A: Configure Salesforce Connector
-Establish using the **Salesforce Objects** connector for direct API communication.
+**Establish **Salesforce Objects** connector for API communication**
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
 🛡️ Step B: Authentication & Source Verification
-Verify via **OAuth2** to extract specific identity attributes (Emails, Names, and Active Status).
+**Verify **OAuth2** Extraction**
 ![Salesforce OAuth2](<Step 5a Connection to Salesforce verifcation via source.png>)
 
-*Jira Integration Audit Logs Parallel Data Activity Copy*
+**Jira Integration Audit Logs Parallel Data Activity Copy**
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
 ## 🛡️ Schema Resilience & Logic
 
-*RiskandCompliance New Query Creation*
+**RiskandCompliance New Query Creation**
 ![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
 
-*RiskandCompliance sfaccounts SQL Creation*
+**RiskandCompliance sfaccounts SQL Creation**
 ![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
 
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
 Ensure pipeline never fails due to schema drift. The script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
-*T-SQL Pre-Copy Script Execution*
-![T-SQL Pre-Copy Script Execution](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
+**T-SQL Pre-Copy Script Execution**
+![T-SQL Pre-Copy Script Execution](<Step 16.a Pre-copy script SQL Identity Source.png>)
 
 ```sql
 /* Automated Schema Validation */
+-- 1. Ensure the history table is ready for the archive
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.audit_history') AND name = 'IdentitySource')
 BEGIN
     ALTER TABLE dbo.audit_history ADD IdentitySource VARCHAR(MAX);
 END
+
+-- 2. Ensure the live table is ready so the Pre-copy script doesn't fail
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'raw_jira_users_list')
+BEGIN
+    IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.raw_jira_users_list') AND name = 'IdentitySource')
+    BEGIN
+        ALTER TABLE dbo.raw_jira_users_list ADD IdentitySource VARCHAR(MAX);
+    END
+END
 ```
-*Schema Mapping
+**Schema Mapping**
 ![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
 
 ### 3️⃣ High-Performance Orchestration
