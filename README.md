@@ -7,7 +7,7 @@
 ![Compliance](https://img.shields.io/badge/Compliance-SOC2%20|%20ISO27001-green?style=for-the-badge)
 
 ## 📖 Overview
-This project implements a scalable, automated **Identity Governance and Administration (IGA)** solution. By orchestrating data between **Salesforce** (Source of Truth) and **Jira** (Operational Access), this engine programmatically identifies "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated.
+This project implements a scalable, automated Identity Governance and Administration (IGA) solution. It orchestrates data between Salesforce (source of truth) and Jira (operational access layer) to identify "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated. This enables proactive detection of unauthorized access and strengthens enterprise compliance and security posture.
 ---
 ## 💼 Business Impact
 
