@@ -41,7 +41,7 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Medallion Architecture** to ensure data integrity.
 
 ### 🏢 Step A: Workspace Foundation
-**Azure Data Factory Creation** then initialize **Microsoft Fabric Workspace**. 
+**Azure Data Factory Creation**  
 
 
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
@@ -50,13 +50,11 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ![Initialize Microsoft Fabric](<Step 3 create fabric workspace.png>)
 
-Next, provision **"Azure Fabric Risk and Compliance"** workspace.
-
 **Provision **Azure Fabric Risk and Compliance** New workspace**
 
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
 
-🚀 Step B: Pipeline Orchestration
+###🚀 Step B: Pipeline Orchestration
 IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes with Salesforce and Jira.
 
 **IAM Enterprise Ingestion Pipeline**
@@ -66,6 +64,7 @@ IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes w
 🛠️ Step C: Build Methodology
 
 **Start "Blank Canvas" Pipeline Activity** then **Copy Job** activities.
+
 ![IAM Blank Canvas](<Step 4a pipeline build by copy data.png>)
 
 **Add "Copy Data" Activity for REST API extraction**
@@ -76,11 +75,13 @@ IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes w
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
 
 ##🔌 Step A: Configure Salesforce Connector
+
 **Establish **Salesforce Objects** connector for API communication**
 
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
 ##🛡️ Step B: Authentication & Source Verification
+
 **Verify **OAuth2** Extraction**
 
 ![Salesforce OAuth2](<Step 5a Connection to Salesforce verifcation via source.png>)
@@ -90,6 +91,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
 ## 🛡️ Step A: Schema Resilience & Logic
+
 **RiskandCompliance New Query Creation**
 
 ![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
@@ -99,6 +101,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 ![```RiskandCompliance```  ```s-faccounts``` SQL Account Creation](<Step 15d RiskandCompliance Schemas dbo Tables sf_accounts ParentID Removed 9 rows 26 columns preview .png>)
 
 ### 2️⃣ Schema Resilience (Pre-Copy Script)
+
 Ensure pipeline never fails due to schema drift. The script runs at the start of every ingestion cycle to verify the `IdentitySource` metadata column:
 
 **SQL Pre-Copy Script**
