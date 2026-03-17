@@ -188,17 +188,17 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 A hybrid of Azure Cloud and Microsoft Fabric (SaaS) Architecture to ensure high availability, security, and performance.
 
 ## Data Orchestration & Engineering
-**Microsoft Fabric Data Factory**
-**Azure Data Lake Storage (ADLS) Generation** 
-**Copy Parallel Copy Processing**
+* **Microsoft Fabric Data Factory**
+* **Azure Data Lake Storage (ADLS) Generation** 
+* **Copy Parallel Copy Processing**
 
 ## Storage & Analytics (Medallion Architecture)
-**Fabric Lakehouse (Bronze Layer)** 
-**Fabric Warehouse (Silver/Gold Layer)** 
+* **Fabric Lakehouse (Bronze Layer)** 
+* **Fabric Warehouse (Silver/Gold Layer)** 
 
-**Delta Lake )ACID transactions)**
+* **Delta Lake )ACID transactions)**
 
 ## Security & Identity
-**OAuth 2.0 authentication** 
-**T-SQL Guardrails** Programmatic scripts used for schema resilience and automated access-drift detection.
-**Role-Based Access Control(RBAC)
+* **OAuth 2.0 authentication** 
+* **T-SQL Guardrails** Programmatic scripts used for schema resilience and automated access-drift detection.
+* **Role-Based Access Control(RBAC)
