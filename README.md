@@ -14,16 +14,16 @@ This project implements a scalable, automated **Identity Governance and Administ
 - Eliminated manual audit reconciliation across Salesforce and Jira
 - Reduced identity audit preparation time by ~70%
 - Enabled real-time detection of unauthorized ("Ghost") users
-- Strengthened SOC2 and ISO 27001 compliance posture
 - Created a scalable audit framework for enterprise IAM governance
----
-## ✨ Key Features
+
+--- Strengthened SOC2 and ISO 27001 compliance posture
+## ✨ Key Capabilities
 * **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
-* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer decoupling extraction from the warehouse write process, eliminating "Write Batch Timeouts."
-* **Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
-* **Self-Healing Schema Resilience:** Employs an automated **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
-* **Programmatic "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
-* **Immutable Audit Archiving:** Point-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
+* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse eliminating "Write Batch Timeouts."
+* **Parallel Processing:** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
+* **Self-Healing Schema Resilience:**  **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
+* **Automated "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
+* **Immutable Audit Archiving:** Point-in-time snapshotting in an `audit_history` table, supporting **SOC2** and **ISO 27001**.
 ---
 ## 🤖 Automated Workflows
 This solution moves beyond manual spreadsheets by automating the entire data lifecycle:
@@ -42,6 +42,7 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 * **SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
 
 ---
+## ⚙️ System Implementation
 
 ## 🏗️ Environment Provision & Implementation Architecture
 Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Medallion Architecture** to ensure data integrity.
@@ -185,7 +186,6 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 ```
 ---
 ### 🛠️ Tech Stack & Infrastructure
-A hybrid of Azure Cloud and Microsoft Fabric (SaaS) Architecture to ensure high availability, security, and performance.
 
 ## Data Orchestration & Engineering
 * **Microsoft Fabric Data Factory**
@@ -200,5 +200,5 @@ A hybrid of Azure Cloud and Microsoft Fabric (SaaS) Architecture to ensure high 
 
 ## Security & Identity
 * **OAuth 2.0 authentication** 
-* **T-SQL Guardrails** Programmatic scripts used for schema resilience and automated access-drift detection.
-* **Role-Based Access Control(RBAC)
+* **T-SQL Validation & Governance Logic**
+* **Role-Based Access Control(RBAC)**
