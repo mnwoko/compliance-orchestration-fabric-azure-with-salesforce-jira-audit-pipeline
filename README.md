@@ -19,7 +19,7 @@ This project implements a scalable, automated **Identity Governance and Administ
 
 ## ✨ Key Capabilities
 * **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
-* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse eliminating "Write Batch Timeouts."
+* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse "Write Batch Timeouts."
 * **Parallel Processing:** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
 * **Self-Healing Schema Resilience:**  **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
 * **Automated "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
