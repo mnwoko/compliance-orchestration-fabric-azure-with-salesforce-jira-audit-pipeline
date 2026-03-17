@@ -1,4 +1,5 @@
-# 🚀 End-to-End Compliance Orchestration: Scaling Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation2 and Microsoft Fabric
+# 🚀 End-to-End Compliance Orchestration: 
+Scaling Salesforce-Jira Identity Audits with Azure Data Lake Storage (ADLS) Generation2 and Microsoft Fabric
 
 ---
 ![Azure](https://img.shields.io/badge/Azure-Data%20Lake%20Gen2-blue?style=for-the-badge&logo=microsoft-azure)
@@ -75,7 +76,7 @@ IAM_Enterprise_Ingestion_Pipeline: primary engine for secure OAuth2 handshakes w
 ## 🔗 Establish Enterprise SaaS Connectivity (Salesforce)
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
 
-🔌 Step A: Configure Salesforce Connector
+##🔌 Step A: Configure Salesforce Connector
 **Establish **Salesforce Objects** connector for API communication**
 
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
@@ -163,3 +164,14 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 🪣 Azure ADLS Gen2 Staging: Successfully buffered high-volume JSON arrays.
 
 🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
+
+## 📂 Project Structure
+
+```text
+├── assets/               # System screenshots and evidence
+├── sql/                  # T-SQL scripts for schema resilience & audits
+│   ├── pre_copy_script.sql
+│   └── ghost_user_reconciliation.sql
+├── pipelines/            # Fabric pipeline JSON exports
+├── README.md             # Project documentation
+└── .gitignore            # Git exclusion rules
