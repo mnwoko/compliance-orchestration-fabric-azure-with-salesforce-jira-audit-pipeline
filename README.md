@@ -42,7 +42,7 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 ### 🏢 Step A: Workspace Foundation
 **Azure Data Factory Creation** then initialize **Microsoft Fabric Workspace**. 
 
-                            **Deploy Azure Data Factory**
+**Deploy Azure Data Factory**
 
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
@@ -80,7 +80,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
-🛡️ Step B: Authentication & Source Verification
+##🛡️ Step B: Authentication & Source Verification
 **Verify **OAuth2** Extraction**
 
 ![Salesforce OAuth2](<Step 5a Connection to Salesforce verifcation via source.png>)
@@ -89,8 +89,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
-## 🛡️ Schema Resilience & Logic
-
+## 🛡️ Step A: Schema Resilience & Logic
 **RiskandCompliance New Query Creation**
 
 ![```RiskandCompliance```  ```s-faccounts``` New Query Creation](<Step 15a RiskandCompliance Schemas dbo Tables sf_accounts... (eclispe) new sql query run select to 100_accounts .png>)
