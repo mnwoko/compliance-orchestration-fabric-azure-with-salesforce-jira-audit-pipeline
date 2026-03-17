@@ -73,13 +73,13 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 ## 🔗 Establish Enterprise SaaS Connectivity (Salesforce)
 Identity Governance engine is the secure extraction of the "Source of Truth" from Salesforce configuring authenticated connectors to pull active directories for cross-referencing.
 
-##🔌 Step A: Configure Salesforce Connector
+###🔌 Step A: Configure Salesforce Connector
 
 **Establish **Salesforce Objects** connector for API communication**
 
 ![Salesforce Objects](<Step 5 choose data source connection - salesforce.png>)
 
-##🛡️ Step B: Authentication & Source Verification
+###🛡️ Step B: Authentication & Source Verification
 
 **Verify **OAuth2** Extraction**
 
