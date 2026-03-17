@@ -50,10 +50,6 @@ Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Me
 
 ![Deploy Azure Data Factory](<Step 2 Data Factory Deployment Complete.png>)
 
-**Initialize Microsoft Fabric Workspace**
-
-![Initialize Microsoft Fabric](<Step 3 create fabric workspace.png>)
-
 **Provision **Azure Fabric Risk and Compliance** New workspace**
 
 ![Provision Azure Fabric RickandCompliance](<Step 3b Azure Fabric Risk and Compliance.png>)
