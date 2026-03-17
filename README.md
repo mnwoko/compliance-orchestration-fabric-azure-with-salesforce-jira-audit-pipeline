@@ -15,8 +15,8 @@ This project implements a scalable, automated **Identity Governance and Administ
 - Reduced identity audit preparation time by ~70%
 - Enabled real-time detection of unauthorized ("Ghost") users
 - Created a scalable audit framework for enterprise IAM governance
-
 - Strengthened SOC2 and ISO 27001 compliance posture
+
 ## ✨ Key Capabilities
 * **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
 * **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse eliminating "Write Batch Timeouts."
@@ -42,8 +42,6 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 * **SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
 
 ---
-## ⚙️ System Implementation
-
 ## 🏗️ Environment Provision & Implementation Architecture
 Deployed within a unified Microsoft Fabric ecosystem, environment follows a **Medallion Architecture** to ensure data integrity.
 
@@ -201,4 +199,4 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 ## Security & Identity
 * **OAuth 2.0 authentication** 
 * **T-SQL Validation & Governance Logic**
-* **Role-Based Access Control(RBAC)**
+* **Role-Based Access Control (RBAC)**
