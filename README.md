@@ -18,20 +18,20 @@ This project implements a scalable, automated **Identity Governance and Administ
 - Created a scalable audit framework for enterprise IAM governance
 ---
 ## ✨ Key Features
-* ** End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
-* ** Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer decoupling extraction from the warehouse write process, eliminating "Write Batch Timeouts."
-* ** Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
-* ** Self-Healing Schema Resilience:** Employs an automated **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
-* ** Programmatic "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
-* ** Immutable Audit Archiving:** Point-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
+* **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
+* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Utilizes **Azure Data Lake Storage Generation 2** as a high-performance staging layer decoupling extraction from the warehouse write process, eliminating "Write Batch Timeouts."
+* **Multi-Threaded Parallel Processing:** Leverages the **Degree of Copy Parallelism** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
+* **Self-Healing Schema Resilience:** Employs an automated **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
+* **Programmatic "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
+* **Immutable Audit Archiving:** Point-in-time snapshotting in an `audit_history` table, fulfilling **SOC2** and **ISO 27001** "Continuous Monitoring" requirements.
 ---
 ## 🤖 Automated Workflows
 This solution moves beyond manual spreadsheets by automating the entire data lifecycle:
-* ** Scheduled Extraction:** Fabric Pipelines automate OAuth2 handshakes and REST API extraction from global SaaS endpoints.
-* ** Self-Healing Infrastructure:** A T-SQL pre-copy script automatically validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
-* ** Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Gen2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
+* **Scheduled Extraction:** Fabric Pipelines automate OAuth2 handshakes and REST API extraction from global SaaS endpoints.
+* **Self-Healing Infrastructure:** A T-SQL pre-copy script automatically validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
+* **Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Gen2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
 
-* ** Programmatic Reconciliation:** T-SQL logic automatically joins disparate datasets to flag "Access Drift" without human intervention.
+* **Programmatic Reconciliation:** T-SQL logic automatically joins disparate datasets to flag "Access Drift" without human intervention.
 
 ---
 
