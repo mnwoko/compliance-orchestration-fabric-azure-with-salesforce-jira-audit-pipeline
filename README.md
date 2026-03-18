@@ -7,36 +7,30 @@
 ![Compliance](https://img.shields.io/badge/Compliance-SOC2%20|%20ISO27001-green?style=for-the-badge)
 
 ## 📖 Overview
-**Access Revocation:** This project implements a scalable, automated Identity Governance and Administration (IGA) solution. It orchestrates data between Salesforce (source of truth) and Jira (operational access layer) to identify "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated. This enables proactive detection of unauthorized access and strengthens enterprise compliance and security posture.
+This project implements a scalable, automated Identity Governance and Administration (IGA) solution. It orchestrates data between Salesforce (source of truth) and Jira (operational access layer) to identify "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated. This enables proactive detection of unauthorized access and strengthens enterprise compliance and security posture.
 ---
-### 🛡️ Business Value: Access Revocation.
-## 🛡️ Project Spotlight: Automated Access Revocation & Identity Governance
+## 🛡️ Business Value: Automated Access Revocation & Identity Governance
 
-## **The Challenge:**
+### ⚠️ **The Challenge:**
 Manual audits of DevOps tool access (Jira) are error-prone and create "latency gaps" where terminated employees retain access to critical infrastructure—a major SOC2 and ISO 27001 compliance risk.
-
-## **The Solution:**
-- Engineered a scalable **Identity Governance and Administration (IGA)** solution using **Azure Microsoft Fabric and Azure ADLS Generation 2** to automate the "Leaver" process:
-- **Source of Truth:** Real-time extraction of active employee directories from Salesforce.
-- **Operational Layer:** Automated ingestion of Jira user access lists via REST API.
-- **Identity Handshake:** A programmatic T-SQL reconciliation engine that identifies "Ghost Users" (access without an active identity) and triggers high-priority alerts for revocation.
-
-## Impact:
-- **Reduced Risk:** Eliminated unauthorized access persistence through automated, daily reconciliation.
-- **Compliance Ready:** Established an immutable audit trail for internal and external security auditors.
-- **Scalable Engineering:** Leveraged ADLS Generation 2 staging to handle enterprise-scale datasets without write-batch timeouts.
 ---
-## 💼 Business Impact
-
-- Eliminated manual audit reconciliation across Salesforce and Jira
-- Reduced identity audit preparation time by ~70%
-- Enabled real-time detection of unauthorized ("Ghost") users
-- Created a scalable audit framework for enterprise IAM governance
-- Strengthened SOC2 and ISO 27001 compliance posture
+### **✅ The Solution: Automated Governance**
+I engineered a scalable IGA framework using **Microsoft Fabric** and **Azure ADLS Generation 2** to automate the "Leaver" process:
+* **Source of Truth:** Real-time OAuth2 extraction of employee directories from Salesforce.
+* **Operational Layer:** Automated REST API ingestion of Jira user access lists.
+* **Identity Handshake:** A T-SQL reconciliation engine that flags unauthorized accounts and triggers high-priority revocation alerts.
+---
+## 💼 Business Impact & Technical Results
+---
+- **🛡️ Enhanced Security Posture:** Eliminated manual audit reconciliation across Salesforce and Jira by real-time detection of unauthorized ("Ghost") users.
+- **⚡ Operational Efficiency:** Reduced manual identity audit preparation time by ~70% - eliminating manual spreadsheet reconciliation.
+- ** 📈 Scalable Architecture:** Deployed Azure ADLS Generation 2 staging to handle enterprise-scale datasets, resolving previous "Write Batch Timeout" bottlenecks.
+- **⚙️ Governance Framework:** Designed reusable, scalable audit framework for long-term Enterprise Identity and Access Management (IAM) governance.
+- **📜 Compliance:** Strengthened SOC2 and ISO 27001 posture by establishing an immutable, point-in-time audit trail for external auditors.
 ---
 ## ✨ Key Capabilities
 * **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
-* **Scalable Ingestion:** **Azure Data Lake Storage (ADLS) Generation 2 :** Decouples API extraction from warehouse writes to eliminate "Write Batch Timeouts."
+* **Scalable Ingestion:** **Azure Data Lake Storage (ADLS) Generation 2** Decouples API extraction from warehouse writes eliminating "Write Batch Timeouts."
 * **Parallel Processing:** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
 * **Self-Healing Schema Resilience:**  **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
 * **Automated "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
@@ -45,13 +39,10 @@ Manual audits of DevOps tool access (Jira) are error-prone and create "latency g
 ## 🤖 Automated Workflows
 This solution moves beyond manual spreadsheets by automating the entire data lifecycle:
 * **Scheduled Extraction:** Fabric Pipelines automate OAuth2 handshakes and REST API extraction from global SaaS endpoints.
-* **Self-Healing Infrastructure:** A T-SQL pre-copy script automatically validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
+* **Self-Healing Infrastructure:** T-SQL Pre-Copy Scripts** validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
 * **Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Generation 2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
-
 * **Programmatic Reconciliation:** T-SQL logic automatically joins disparate datasets to flag "Access Drift" without human intervention.
-
 ---
-
 ## 🛠️ Core Technologies
 * **Microsoft Fabric:** Unified analytics platform for data residency and compute.
 * **Azure Data Lake Storage (ADLS) Generation 2:** High-performance staging layer for reliable ingestion.
@@ -106,7 +97,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
-### 🛡️ Step C: Schema Drift Resilience & Logic
+### 🛡️ Step C: Identity Attribute Selection
 
 **Risk and Compliance `sf_accounts` SQL Creation**
 
@@ -142,7 +133,7 @@ END
 
 ![Schema Mapping](<Step 16g Mapping import schema selection and removal of source needed for project.png>)
 
-### 🛡️ Step E: High-Performance Orchestration
+### 🛡️ Step E: Decoupled ETL Orchestration
 
 **Multi-threading/Parallelism / REST API / ADLS Generation 2  Staging / Warehouse Destination**
 
