@@ -135,7 +135,7 @@ END
 
 ### 🛡️ Step E: Decoupled ETL Orchestration
 
-**Multi-threading/Parallelism / REST API / ADLS Generation 2  Staging / Warehouse Destination**
+**Multi-threading/Parallelism/ REST API/ ADLS Generation 2  Staging/ Warehouse Destination**
 
 ![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
 
@@ -195,7 +195,7 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 * **Fabric Lakehouse (Bronze Layer)** 
 * **Fabric Warehouse (Silver/Gold Layer)** 
 
-* **ACID Transactions Delta Lake **
+* **ACID Transactions Delta Lake**
 
 ## Security & Identity
 * **OAuth 2.0 authentication** 
