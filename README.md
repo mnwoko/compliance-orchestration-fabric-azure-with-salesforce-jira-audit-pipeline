@@ -7,7 +7,24 @@
 ![Compliance](https://img.shields.io/badge/Compliance-SOC2%20|%20ISO27001-green?style=for-the-badge)
 
 ## 📖 Overview
-This project implements a scalable, automated Identity Governance and Administration (IGA) solution. It orchestrates data between Salesforce (source of truth) and Jira (operational access layer) to identify "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated. This enables proactive detection of unauthorized access and strengthens enterprise compliance and security posture.
+**Access Revocation:** This project implements a scalable, automated Identity Governance and Administration (IGA) solution. It orchestrates data between Salesforce (source of truth) and Jira (operational access layer) to identify "Ghost Users"—individuals who retain access to critical DevOps infrastructure after their corporate identity has been deactivated or terminated. This enables proactive detection of unauthorized access and strengthens enterprise compliance and security posture.
+---
+### 🛡️ Business Value: Access Revocation.
+## 🛡️ Project Spotlight: Automated Access Revocation & Identity Governance
+
+## **The Challenge:**
+Manual audits of DevOps tool access (Jira) are error-prone and create "latency gaps" where terminated employees retain access to critical infrastructure—a major SOC2 and ISO 27001 compliance risk.
+
+## **The Solution:**
+- Engineered a scalable **Identity Governance and Administration (IGA)** solution using **Azure Microsoft Fabric and Azure ADLS Generation 2** to automate the "Leaver" process:
+- **Source of Truth:** Real-time extraction of active employee directories from Salesforce.
+- **Operational Layer:** Automated ingestion of Jira user access lists via REST API.
+- **Identity Handshake:** A programmatic T-SQL reconciliation engine that identifies "Ghost Users" (access without an active identity) and triggers high-priority alerts for revocation.
+
+## Impact:
+- **Reduced Risk:** Eliminated unauthorized access persistence through automated, daily reconciliation.
+- **Compliance Ready:** Established an immutable audit trail for internal and external security auditors.
+- **Scalable Engineering:** Leveraged ADLS Generation 2 staging to handle enterprise-scale datasets without write-batch timeouts.
 ---
 ## 💼 Business Impact
 
@@ -19,7 +36,7 @@ This project implements a scalable, automated Identity Governance and Administra
 ---
 ## ✨ Key Capabilities
 * **End-to-End Compliance Orchestration:** Automates lifecycle data from REST API extraction to SQL Warehouse.
-* **Scalable Ingestion: Azure Data Lake Storage (ADLS) Gen2:** Decouples API extraction from warehouse writes to eliminate "Write Batch Timeouts."
+* **Scalable Ingestion:** **Azure Data Lake Storage (ADLS) Generation 2 :** Decouples API extraction from warehouse writes to eliminate "Write Batch Timeouts."
 * **Parallel Processing:** Microsoft Fabric to orchestrate concurrent API threads, ensuring rapid synchronization of enterprise-scale directories.
 * **Self-Healing Schema Resilience:**  **T-SQL Pre-Copy Script** that validates destination tables and dynamically appends metadata columns to prevent ingestion failures.
 * **Automated "Ghost User" Detection:** Reconciliation engine joins disparate datasets to automatically flag terminated or unauthorized accounts.
@@ -29,7 +46,7 @@ This project implements a scalable, automated Identity Governance and Administra
 This solution moves beyond manual spreadsheets by automating the entire data lifecycle:
 * **Scheduled Extraction:** Fabric Pipelines automate OAuth2 handshakes and REST API extraction from global SaaS endpoints.
 * **Self-Healing Infrastructure:** A T-SQL pre-copy script automatically validates the warehouse schema and adds missing audit columns (e.g., `IdentitySource`) on-the-fly.
-* **Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Gen2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
+* **Elastic Scaling:** Leverages **Parallel Copy** settings and **Azure Data Lake Storage (ADLS) Generation 2** staging to prevent write-batch timeouts and handle enterprise-scale user directories.
 
 * **Programmatic Reconciliation:** T-SQL logic automatically joins disparate datasets to flag "Access Drift" without human intervention.
 
@@ -37,7 +54,7 @@ This solution moves beyond manual spreadsheets by automating the entire data lif
 
 ## 🛠️ Core Technologies
 * **Microsoft Fabric:** Unified analytics platform for data residency and compute.
-* **Azure Data Lake Storage (ADLS) Gen2:** High-performance staging layer for reliable ingestion.
+* **Azure Data Lake Storage (ADLS) Generation 2:** High-performance staging layer for reliable ingestion.
 * **Fabric Lakehouse & Warehouse:** Storage layers utilizing **Delta tables** to ensure ACID-compliant snapshots.
 * **SQL Analytics Endpoint:** Distributed T-SQL engine for cross-platform identity handshakes.
 
@@ -89,7 +106,7 @@ Identity Governance engine is the secure extraction of the "Source of Truth" fro
 
 ![Salesforce CRM and Jira Integration Audit Logs Parallel Data Activity](<Step 16 Jira Integration Audit Logs Parallel Data Activity Copy.png>)
 
-### 🛡️ Step C: Schema Resilience & Logic
+### 🛡️ Step C: Schema Drift Resilience & Logic
 
 **Risk and Compliance `sf_accounts` SQL Creation**
 
@@ -127,7 +144,7 @@ END
 
 ### 🛡️ Step E: High-Performance Orchestration
 
-**Parallelism / REST API / ADLS Gen2 Staging / Warehouse Destination**
+**Multi-threading/Parallelism / REST API / ADLS Generation 2  Staging / Warehouse Destination**
 
 ![REST API Schema Mapping](< Step 17 Final Step SQL endpoints updated ingest_jira_audit_logs succeededrest API azure data lake storage gen2 warehouse.png>)
 
@@ -159,7 +176,7 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 
 📥 REST API Extraction: Completed successfully without payload drop-offs.
 
-🪣 Azure ADLS Gen2 Staging: Successfully buffered high-volume JSON arrays.
+🪣 Azure ADLS Generation 2 Staging: Successfully buffered high-volume JSON arrays.
 
 🎯 Warehouse Load: Finalized (Point-in-time snapshot permanently stored in audit_history).
 
@@ -178,18 +195,24 @@ Final logs confirm a Succeeded status across the entire orchestration chain:
 ---
 ### 🛠️ Tech Stack & Infrastructure
 
-## Data Orchestration & Engineering
+## Data ETL/ELT Orchestration & Engineering
 * **Microsoft Fabric Data Factory**
 * **Azure Data Lake Storage (ADLS) Generation 2**
-* **Parallel Copy Processing**
+* **Multi-threading/Parallelism Copy Processing**
 
 ## Storage & Analytics (Medallion Architecture)
 * **Fabric Lakehouse (Bronze Layer)** 
 * **Fabric Warehouse (Silver/Gold Layer)** 
 
-* **Delta Lake (ACID transactions)**
+* **ACID Transactions Delta Lake **
 
 ## Security & Identity
 * **OAuth 2.0 authentication** 
 * **T-SQL Validation & Governance Logic**
 * **Role-Based Access Control (RBAC)**
+
+### 🛠️ Skills Demonstrated
+* **Cloud Infrastructure:** Microsoft Fabric, Azure Data Factory, ADLS Generation 2 
+* **Languages:** T-SQL (Advanced), JSON/REST API Integration
+* **Security:** Identity Lifecycle Management, Audit Automation, Compliance Mapping (SOC2)
+* **Architecture:** Medallion (Bronze/Silver/Gold), Staging-to-Warehouse Orchestration
